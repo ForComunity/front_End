@@ -1,0 +1,45 @@
+.banner{
+    background-color: blueviolet;
+    padding-top: 100px  ;
+    height: 500px;
+}
+
+.banner .p1{
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.banner .p2{
+    color: white;
+    text-align: center;
+    font-size: 1.3rem;
+}
+ .search .col-2{
+    padding: 0px;
+}
+.navSearch p{
+    cursor:pointer;
+}
+
+.boxSearch .col-10{
+    padding: 20px;
+    background-color: white;
+}
+.boxSearch input,.boxSearch select{
+    border: none;
+}
+.boxSearch .col-3{
+    border-right: 1px solid gainsboro;
+}
+.boxSearch button{
+    color: white;
+    background-color: coral;
+    border: 1px solid coral;
+}
+.red{
+    color: red;
+}
+.white{
+    color: white;
+}
