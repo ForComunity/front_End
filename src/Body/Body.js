@@ -16,11 +16,11 @@ class Body extends Component {
         // console.log(this.props.class1)
         return(
             <Router>
-            
+
                 <nav className={this.props.class}>
                     <div className="container">
                     <div className="navbar-brand">
-                    <img src="http://localhost:4001/logo" width="50%" alt="logo"></img>
+                    <img src="/uploads/logongang.png" width="50%"  alt="logo"></img>
                     </div>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i className="fas fa-bars"></i>
@@ -44,7 +44,7 @@ class Body extends Component {
                             <li className="nav-item dropdown">
                                 <button className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Đăng Kí </button>
                                 <div className="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                    <Link to="registration"><p className="dropdown-item">Giải Cứ</p></Link>
+                                    <Link to="/registration"><p className="dropdown-item">Giải Cứ</p></Link>
                                     <Link to="abc"><p className="dropdown-item">Nhận Giải Cứu</p></Link>
                                 </div>
                             </li>
@@ -55,7 +55,7 @@ class Body extends Component {
                     </div>
                     </div>
                 </nav>
-                     
+
                 <Switch>
                     <Route path="/" exact component={Home}/>
                     <Route path="/nongsan"  render={props =>  <ShowProduct {...props} class={this.props.class1}  Name="Váy Yếm" />}/>

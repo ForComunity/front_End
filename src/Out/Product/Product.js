@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './Product.css';
 import Axios from 'axios';
+import Lq from './Lq';
 // import Banner from './Banner';
 // import NewProduct from './NewProduct';
 class Product extends Component {
@@ -19,7 +20,7 @@ class Product extends Component {
     componentDidMount(){
         console.log(this.props.match.params.id)
         var id=this.props.match.params.id
-        var url='http://930d2282.ngrok.io/api/articleSpecies/'+id
+        var url='/api/articleSpecies/'+id
         Axios.get(url).then(res=>{
             console.log(res.data)
             this.changel(res.data.as_images1,"link1")
@@ -29,11 +30,18 @@ class Product extends Component {
                     data:res.data
                 })
             })
+        var url1='/api/articleSpecies/articleSpeciesSame/'+id
+        console.log(url1)
+        Axios.get(url1).then(res=>{
+          this.setState({
+            data1:res.data
+          })
+        })
     }
     changel=(img1,abc)=>{
         // var name=abc;
-        var link="http://930d2282.ngrok.io/uploads"
-        var explode = img1.split('__');   
+        var link="/uploads"
+        var explode = img1.split('__');
         var link1=explode[0];
         var link2=link1.split('-')
         link=link+'/'+link2[0]+'/'+link2[1]+'/'+link2[2]+"/"+img1
@@ -42,20 +50,19 @@ class Product extends Component {
         })
     }
     render(){
-        // console.log(this.state.link1)
         return(
             <div className="ShowProduct">
                 <div className="pSearch">
                 Tìm kiếm <i class="fas fa-search"></i></div>
                 <div className="pTitle">
-                    <div className="container"> 
+                    <div className="container">
                         <span>
                              Giải Cứu <i class="fas fa-angle-right"></i> Nông Sản <i class="fas fa-angle-right"></i>  {this.state.data.as_name}
                         </span>
-                    </div>    
+                    </div>
                  </div>
                  <div className="product">
-                    <div className="container"> 
+                    <div className="container">
                         <div className="row">
                             <div className="col-8">
                                 <p><b> {this.state.data.as_title}</b></p>
@@ -69,41 +76,7 @@ class Product extends Component {
                                 <p>{this.state.data.as_content3}</p>
                                 <button className="hvr-sweep-to-right">Nhận Giải Cứu</button>
                             </div>
-                            <div className="col-4">
-                                <div className="panel tochuc">
-                                    <div class="panel-heading">
-                                        <h1 class="panel-title"><b>Đơn Vị Tổ Chức</b></h1>
-                                    </div>
-                                    <div>
-                                        <p>a</p>
-                                        <p>a</p>
-                                        <p>a</p>        
-                                    </div>
-                                </div>
-                                <div className="panel lienquan">
-                                    <div class="panel-heading">
-                                        <h1 class="panel-title"><b>Bản Tin Liên Quan</b></h1>
-                                    </div>
-                                    <div>
-                                        <div className="row bantin">
-                                            <div className="col-5">
-                                            <img src="http://localhost:4001/dua-hau" width="100%" margin-right="15%" alt="anh"></img>
-                                            </div>
-                                            <div className="col-7">
-                                                mô tả nhỏ
-                                            </div>
-                                        </div>
-                                        <div className="row bantin">
-                                            <div className="col-5">
-                                            <img src="http://localhost:4001/dua-hau" width="100%" margin-right="15%" alt="anh"></img>
-                                            </div>
-                                            <div className="col-7">
-                                                mô tả nhỏ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <Lq data={this.state.data1}></Lq>
                         </div>
                     </div>
                  </div>
@@ -121,9 +94,9 @@ class Product extends Component {
                             </div>
                          </div>
                         <div className="txtCmt">
-                             <i class="far fa-user"></i>    
+                             <i class="far fa-user"></i>
                              <textarea placeholder="CMT"></textarea>
-                        </div> 
+                        </div>
                     </div>
                  </div>
             </div>

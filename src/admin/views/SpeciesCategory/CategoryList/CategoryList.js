@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button, Card, CardBody, CardHeader, Col, Input, Row, Table} from 'reactstrap';
-import Axios from "axios";
+import {Button, Card, CardBody, CardHeader, Col, Row, Table} from 'reactstrap';
+import axios from "axios";
 
 
 class categoryList extends Component {
@@ -11,15 +11,14 @@ class categoryList extends Component {
     this.state = {
       isLoaded: false,
       items: [],
-      error: {},
-      limit: 15,
-      totalPage: 0,
-      users: [],
+      status:{
+        cate_status: null,
+      }
     }
   }
 
   loadCategoryList = () => {
-    fetch('http://127.0.0.1:8000/api/category', {
+    fetch('/api/category', {
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
@@ -42,25 +41,24 @@ class categoryList extends Component {
     if (!window.confirm("Xác nhận xóa danh mục\n [" + category.cate_name + "]")) {
       return;
     }
-    fetch('http://127.0.0.1:8000/api/category/' + category.id, {
+    fetch('/api/category/' + category.id, {
         method: 'delete',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        }
       },
-    ).then(
-      (result) => {
-        this.loadCategoryList()
-      },
-    ).catch(
-      result => {
-        if (result.response !== undefined) {
-        } else {
-          throw result;
-        }
-      }
+    ).then(this.loadCategoryList()
+    )
+  };
+  changeStatus = (event, category) => {
+    var url='/api/category/changeStatus/' + category.id;
+    axios.post(url
+    ).then(this.loadCategoryList()
     );
+  };
+  changeColor = (status) => {
+    if (status === 1) {
+      return ("ghost-primary");
+    } else if (status === 0) {
+      return ("ghost-danger");
+    }
   };
 
   render() {
@@ -79,7 +77,7 @@ class categoryList extends Component {
             <Col xl={12}>
               <Card>
                 <CardHeader>
-                  <i className="fa fa-align-justify"></i> Quản lý Danh mục chủng loại
+                  <i className="fa fa-align-justify"> </i> Quản lý Danh mục chủng loại
                 </CardHeader>
                 <CardBody>
                   <Row className={"mb-3"}>
@@ -101,8 +99,9 @@ class categoryList extends Component {
                         <td>{category.cate_name}</td>
                         <td>{category.cate_description}</td>
                         <td>
-                          <span><Button size="sm" color="ghost-danger"><i
-                            className="fa fa-times"/> {category.cate_status === 1 ? "Public" : "private"}</Button></span>
+                          <span onClick={event => this.changeStatus(event, category)}><Button size="sm"
+                            color={this.changeColor(category.cate_status)}>
+                            {category.cate_status === 1 ? "public" : "private"}</Button></span>
                         </td>
                         <td>
                           <Link to={"/SpeciesCategory/" + category.id} className={"edit-button"}><Button size="sm"

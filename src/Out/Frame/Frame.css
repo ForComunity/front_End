@@ -3,6 +3,7 @@
     border-radius: 4px;
     overflow: hidden;
     padding: 15px;
+    height: 100%;
 }
 .frame p:first-child{
     /* color: red; */

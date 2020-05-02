@@ -4,19 +4,19 @@ import '../../hover.css'
 import { Link } from 'react-router-dom';
 class Frame extends Component {
     render(){
-        var link="http://930d2282.ngrok.io/uploads"
-        var explode = this.props.img.split('__');   
+        var link="/uploads"
+        var explode = this.props.img.split('__');
         var link1=explode[0];
         var link2=link1.split('-')
         link=link+'/'+link2[0]+'/'+link2[1]+'/'+link2[2]+"/"+this.props.img
-        console.log(link)
+        // console.log(link)
         var link3='/product/'+this.props.link+"/"+this.props.id
-        console.log(this.props.link)
+        // console.log(this.props.link)
         return(
 
                 <div className="col-6 wow animated fadeInDown">
-                    
-                        <div className="frame"> 
+
+                        <div className="frame">
                             <p >{this.props.as_title_seo}</p>
                             <p>{this.props.userid} : {this.props.time}</p>
                             <div className="row">
@@ -32,7 +32,7 @@ class Frame extends Component {
                                 </div>
                             </div>
                         </div>
-                    
+
                 </div>
         )
     }

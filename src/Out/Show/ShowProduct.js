@@ -16,7 +16,7 @@ class ShowProduct extends Component {
         }
       }
     componentDidMount(){
-        Axios.get("http://930d2282.ngrok.io/api/articleSpecies").then(res=>{
+        Axios.get("/api/articleSpecies").then(res=>{
             this.setState({
                 data:res.data,
                 loading:1
@@ -32,14 +32,14 @@ class ShowProduct extends Component {
             if (menu.as_user_id === null) {
                 userid='admin'
             } else userid =menu.as_user_id
-            console.log(menu)
+            // console.log(menu)
             return(
                 <Frame key={menu.as_slug} id={menu.id} as_title_seo={menu.as_title_seo} as_description_seo={menu.as_description_seo} link={menu.as_slug} time={menu.created_at} userid={userid} img={menu.as_images1} >  </Frame>
             )
         })
         return result
     }
-    
+
     render(){
         // console.log(this.state.data)
         if (this.state.loading===0){
@@ -51,19 +51,19 @@ class ShowProduct extends Component {
         } else
         return(
             <div className="ShowProduct">
-                 
+
                 <div className="pSearch">
                 Tìm kiếm <i className="fas fa-search"></i></div>
                 <div className="pTitle">
-                    <div className="container"> 
+                    <div className="container">
                         <span>
                              Giải Cứu <i className="fas fa-angle-right"></i> Nông Sản
                         </span>
-                    </div>    
+                    </div>
                  </div>
-                 <div className="container"> 
+                 <div className="container">
                     <div className="pd">
-                        <p className="wow animated bounceInRight">Có <span>3</span> bài đăng</p>
+                        <p className="wow animated bounceInRight">Có <span>{this.state.data.length}</span> bài đăng</p>
                         <p className="wow animated bounceInRight"><b>Nông Sản  </b></p>
                         <div className="row">
                            {this.Show(this.state.data)}

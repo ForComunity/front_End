@@ -14,11 +14,11 @@ class Banner extends Component {
         this.setState({
             cl:"bounceInDown"
         })
-    }  
+    }
     handleChange(e){
         this.setState({
           tech: e.target.value
-        }) 
+        })
       }
     show=()=>{
         if (this.state.navSearch===1){
@@ -28,14 +28,14 @@ class Banner extends Component {
                     cl2:"col-2 white"
                 })
             }
-            
+
             return(
                 <select className=" dropdown-toggle form-control" id="inputGroupSelect01" onChange={this.handleChange.bind(this)} value={this.state.tech}>
                     <option value="0">Nông Sản</option>
                     <option value="1">Động Vật</option>
                     <option value="2">Người Vô Gia Cư</option>
                 </select>
-            ) 
+            )
         } else {
             if (this.state.cl1 ==="col-1 red")
             this.setState({
@@ -60,7 +60,7 @@ class Banner extends Component {
                 <div className="container">
                     <p className="p1 animated bounceInDown">Sẵn Sàng Hỗ Trợ</p>
                     <p className="p2 animated rollIn"> Chung Tay Giúp Sức Cộng Đồng</p>
-                    <div className="search animated zoomInLeft"> 
+                    <div className="search animated zoomInLeft">
                         <div className="navSearch">
                             <div className="row">
                                 <p className={this.state.cl1}  onClick={() =>this.chang(1)}>Giải Cứu</p>

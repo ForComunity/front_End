@@ -43,7 +43,7 @@ class Main extends Component{
             top:"return-to-top none"
           })
         }
-        if (this.state.height-this.state.prevScrollpos===979){
+        if (this.state.height-this.state.prevScrollpos===947){
           this.setState({
             bottom:"return-to-bottom none"
           })

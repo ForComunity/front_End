@@ -4,7 +4,9 @@ class Registration extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      tech:"0"
     }
+
  }
   onChange =(e)=>{
     // console.log(e.target)
@@ -12,6 +14,11 @@ class Registration extends Component {
     var value=e.target.value;
     this.setState({
       [name]:value
+    })
+  }
+  handleChange(e){
+    this.setState({
+      tech: e.target.value
     })
   }
   render(){
@@ -34,8 +41,8 @@ class Registration extends Component {
                 </div>
                 <div className="form-group">
                     <label >Chủ Đề</label>
-                    <select class="form-control">
-                        <option selected>Nông Sản</option>
+                    <select className="form-control" value={this.state.tech} onChange={this.handleChange.bind(this)}>
+                        <option value="0">Nông Sản</option>
                         <option value="1">Động Vật</option>
                         <option value="2">Người Vô Gia Cư</option>
                     </select>
@@ -44,17 +51,17 @@ class Registration extends Component {
                     <label >Mô Tả</label>
                     <textarea ></textarea>
                 </div>
-                <div class="form-check">
+                <div className="form-check">
                     <input type="checkbox" className="form-check-input" ></input>
                     <label className="form-check-label" >chấp nhận mọi yêu cầu</label>
                 </div>
-                
-                    <button type="submit" class="btn btn-primary">Gửi Đăng Ký</button>
+
+                    <button type="submit" className="btn btn-primary">Gửi Đăng Ký</button>
                 </form>
           </div>
-            
+
       </div>
-    
+
     )
     }
 }
