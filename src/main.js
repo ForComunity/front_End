@@ -1,8 +1,14 @@
 import React,{Component} from 'react';
-import Header from './Header/Header';
-import Body from './Body/Body';
-import Footer from './Footer/Footer';
+import Header from '../src/page/Header/Header';
+import Body from '../src/page/Body/Body';
+import Footer from '../src/page/Footer/Footer';
+import Axios from 'axios';
 import './index.css'
+import { listproduct, listspeciesCategory, user } from './Component/Product/store';
+import {BrowserRouter as Router,
+} from "react-router-dom";
+import { observer } from 'mobx-react';
+
 class Main extends Component{
     constructor(props) {
         super(props);
@@ -16,7 +22,18 @@ class Main extends Component{
         };
       }
       componentDidMount() {
+        // let id = localStorage.getItem('id')
+        // let id = localStorage.getItem()
+        // user.changeuser()
+        Axios.get("/api/species").then(res=>{
+          listproduct.changlistproduct(res.data)
+        })
+        Axios.get('/api/speciesCategory').then(res=>{
+          listspeciesCategory.change(res.data)
+        })
+        // console.log("object");
         window.addEventListener("scroll", this.handleScroll);
+
       }
 
       componentWillUnmount() {
@@ -26,11 +43,13 @@ class Main extends Component{
       handleScroll = () => {
 
         const currentScrollPos = window.pageYOffset;
+        const node = this.node;
         this.setState({
           prevScrollpos: currentScrollPos
         });
         // console.log(this.state.prevScrollpos)
-        if (this.state.prevScrollpos>38){
+        // console.log(node.scrollHeight);
+        if (this.state.prevScrollpos>1){
           this.setState({
             class:"navbar navbar-expand-lg teal navbar2",
             class1:"ShowProduct mar",
@@ -43,7 +62,7 @@ class Main extends Component{
             top:"return-to-top none"
           })
         }
-        if (this.state.height-this.state.prevScrollpos===947){
+        if (node.scrollHeight-this.state.prevScrollpos===890){
           this.setState({
             bottom:"return-to-bottom none"
           })
@@ -62,11 +81,11 @@ class Main extends Component{
       }
       componentWillUpdate() {
         const node = this.node;
-        if (this.state.height!==node.scrollHeight){
-          this.setState({
-            height:node.scrollHeight
-          })
-        }
+        // if (this.state.height!==node.scrollHeight){
+        //   this.setState({
+        //     height:node.scrollHeight
+        //   })
+        // }
     }
       scrollToBottom=()=> {
         window.scrollTo({
@@ -76,9 +95,23 @@ class Main extends Component{
         // console.log(height)
       }
     render(){
+      let id= localStorage.getItem('id')
+      let name= localStorage.getItem('name')
+      let phone= localStorage.getItem('phone')
+      let address= localStorage.getItem('address')
+      let email=localStorage.getItem('email')
+      // console.log(id);
+      if (id !== null) {
+        if (user.id !== id){
+          user.changeuser(name,id,phone,address,email)
+        }
+      } else {
+        if (user.id !== 0){
+          user.changeuser('',0,'','','')
+        }
+      }
         return(
             <div ref={(node) => { this.node = node; }}>
-                <Header></Header>
                 <Body class={this.state.class} class1={this.state.class1}></Body>
                 <Footer></Footer>
                 <div  className={this.state.top} onClick={this.scrollToTop} data-toggle="tooltip"><i className="icon-chevron-up"></i></div>
@@ -87,6 +120,6 @@ class Main extends Component{
         )
     }
 }
-export default Main
+export default observer(Main)
 
 
