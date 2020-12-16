@@ -2,17 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { observer } from 'mobx-react'
 import "./layout.css"
 import Frame from '../Component/Frame/Frame';
-import  { listNongsan, listproduct, listspeciesCategory } from '../Component/Product/store';
+import  { listNongsan, listproduct, listspeciesCategory, listtochuc, listtochucCategory } from '../Component/Product/store';
 import ShowProduct from '../Component/Show/ShowProduct';
-import Axios from 'axios';
-function NongsanLayout(props){
+function TochucLayout(props){
   // console.log(listproduct.nongsan(17));
   // const [data,setdata] = useState([])
   // useEffect(()=>{
-  //   Axios.get("/api/species").then(res=>{
-  //     listproduct.changlistproduct(res.data)
-  //     console.log(res.data);
-  //   })
+  //     setdata(listproduct.nongsan(17))
   // },[])
   //   // const data=listproduct.nongsan(17)
   //   if (listproduct.nongsan.length === undefined){
@@ -30,20 +26,18 @@ function NongsanLayout(props){
       let result = null
       result = category.map(value=>{
         console.log("object");
-        if (value.cat_id===3){
           let data1 = data.filter(abc=>abc.spe_cat_id === value.id)
           let status = (value.status ===1 ) ? "cần giải cứu gấp":"bình thường"
           return(
             <div>
-                <h4><b>{value.name+'( '+status+" )"}</b></h4>
+                <h4><b>{value.name}</b></h4>
                 <ShowProduct data={data1} ></ShowProduct>
             </div>
           )
-        }
       })
       return result
     }
-    // console.log(listspeciesCategory.listspeciesCategory);
+    console.log(listtochucCategory.listspeciesCategory);
     return(
       <div>
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -53,7 +47,9 @@ function NongsanLayout(props){
                 <div class="banner-info">
                   <div class="container">
                     <div class="banner-info-bg mr-auto">
-                      <h5>NGƯỜI VIỆT NAM DÙNG NÔNG SẢN VIỆT NAM</h5>
+                      <h5>Vegetables and Fruits Good For Health</h5>
+                      <p>Conse ctetur Lorem ipsum dolor sit amet adipi sicing elit. Quae, velit recu sandae eum necessi tatibus bland itiis</p>
+                      <a class="btn btn-theme2 mt-md-5 mt-4" href="contact.html"> Contact Us</a>
                     </div>
                   </div>
                 </div>
@@ -64,7 +60,9 @@ function NongsanLayout(props){
                 <div class="banner-info">
                   <div class="container">
                     <div class="banner-info-bg mr-auto">
-                      <h5>QUYẾT TÂM KHÔNG ĐỂ ĐƯỢC MÙA NHƯNG MẤT GIÁ</h5>
+                      <h5>Vegetables and Fruits Good For Health</h5>
+                      <p>Conse ctetur Lorem ipsum dolor sit amet adipi sicing elit. Quae, velit recu sandae eum necessi tatibus bland itiis</p>
+                      <a class="btn btn-theme2 mt-md-5 mt-4" href="contact.html"> Contact Us</a>
                     </div>
                   </div>
                 </div>
@@ -81,9 +79,9 @@ function NongsanLayout(props){
           </a>
         </div>
         <div className="pd container">
-          {showin(listspeciesCategory.listspeciesCategory,listproduct.nongsan(3))}
+          {showin(listtochucCategory.listspeciesCategory,listtochuc.listproduct)}
         </div>
       </div>
     )
 }
-export default observer(NongsanLayout)
+export default observer(TochucLayout)

@@ -51,7 +51,10 @@ input:focus {
 
   }
   .navbar-brand{
-    width: 25%;
+    width: 15%;
+  }
+  .navbar-brand img{
+    width: 100%;
   }
   .navbar-nav li{
     margin-left: 20px;

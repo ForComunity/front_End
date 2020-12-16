@@ -5,10 +5,28 @@ import NewProduct from './NewProduct';
 import Service from './Service';
 import Contact_us from './Contact_us';
 import { observer } from 'mobx-react';
+import Team from './team';
+import Ourproject from './ourproject';
+import { listproduct, listtochuc } from '../Product/store';
+import Axios from 'axios';
 require('dotenv').config()
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        length:0
+    };
+  }
+  componentDidMount(){
+    Axios.get('/api/user').then(res=>{
+      console.log(res.data);
+      this.setState({
+        length:res.data.length
+      })
+    })
+  }
     render(){
-      // console.log(process.env)
+      // console.log(listproduct.listproduct)
         return(
             <div className="home">
             <Banner></Banner>
@@ -18,32 +36,31 @@ class Home extends Component {
                   <h3 class="tittle">
                     <span>W</span>elcome
                   </h3>
-                  <p>ed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
                 <div class="welcome-sub-wthree row">
                   <div class="col-md-5 col-sm-12 banner_bottom_left">
                     <h4>About
-                      <span>Green Life</span>
+                      <span> Project</span>
                     </h4>
-                    <p>Lorem Ipsum convallis diam consequat magna vulputate malesuada. Cras a ornare elit, Nulla viverra pharetra sem eget.</p>
-                    <p>Pellentesque convallis diam consequat magna vulputate malesuada. Cras a ornare elit. Nulla viverra pharetra sem, eget
-                      pulvinar neque pharetra ac.Lorem Ipsum convallis diam consequat magna vulputate malesuada, Crasa ornare elit. Lorem
-                      Ipsum convallis diam Nulla viverra pharetra sem.</p>
+                    <p>Việt Nam là một đất nước nông nghiệp. Mỗi năm có rất nhiều các loại nông sản được bà con nông dân sản xuất, gieo trồng nhằm mục đích tiêu thụ trong nước và xuất khẩu.
+                     Nhưng có một vấn đề rất nan giải trong nhiều năm qua đó là : Nông sản được mùa nhưng mất giá.</p>
+                    <p>Với mục đích nhằm giải quyết vấn đề đó, nhóm chúng tôi đề xuất một công cụ giúp người nông dân có thể kết nối đến người tiêu dùng, doanh nghiệp tiêu thụ một cách dễ dàng hơn.
+                    </p>
+                    <p>Website: Giải cứu</p>
                   </div>
                   <div class="col-md-7 col-sm-12 stats-info-agile">
                     <div class="w3l-right-stats">
                       <div class="stats-grid stat-border">
-                        <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='768' data-delay='.5' data-increment="1">768</div>
-                        <p>Trees planted</p>
+                        <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='768' data-delay='.5' data-increment="1">{listproduct.listproduct.length}</div>
+                        <p>SÓ BÀI VIẾT</p>
                       </div>
                       <div class="stats-grid">
-                        <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='678' data-delay='.5' data-increment="1">678</div>
-                        <p>Likes</p>
+                        <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='678' data-delay='.5' data-increment="1">{this.state.length}</div>
+                        <p>SÓ NGƯỜI DÙNG</p>
                       </div>
                       <div class="stats-grid stat-border border-st2">
-                        <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='800' data-delay='.5' data-increment="1">800</div>
-                        <p>Volunteers</p>
+                        <div class='numscroller numscroller-big-bottom' data-slno='1' data-min='0' data-max='800' data-delay='.5' data-increment="1">{listtochuc.listproduct.length}</div>
+                        <p>SÓ TỔ CHỨC</p>
                       </div>
                     </div>
                   </div>
@@ -59,13 +76,15 @@ class Home extends Component {
                   </h3>
                 </div>
                 <div class="agileits-services-row row">
-                  <Service title="Save Water" content="Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut"></Service>
-                  <Service title="Recycling" content="Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut"></Service>
-                  <Service title="Save Forests" content="Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut"></Service>
+                  <Service title="Giải Cứu Nông Sản" content="Giải cứu các loại nông sản, hoa màu gặp tình trạng được mùa nhưng mất giá" to="/nongsan"></Service>
+                  <Service title="Giải Cứu Động Vật" content="Giải cứu các loại động vật đang trong sách đỏ, động vật lang thang, hải sản không xuất khẩu được" to="/dongvat"></Service>
+                  <Service title="Liên Kết Tổ Chức" content="Xây dựng một cộng đồng gồm các doanh nghiệp, tổ chức tham gia vào quá trình giải cứu" to="/organization"></Service>
                 </div>
 
               </div>
             </div>
+            <Team></Team>
+            <Ourproject></Ourproject>
             <div class="contact" id="contact">
               <div class="title-div">
                 <h3 class="tittle">
@@ -85,7 +104,7 @@ class Home extends Component {
                   </div>
                 </div>
                 <div class="col-md-6 map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.948805392833!2d-73.99619098458929!3d40.71914347933105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a27e2f24131%3A0x64ffc98d24069f02!2sCANADA!5e0!3m2!1sen!2sin!4v1479793484055"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.6763231528553!2d105.8412638153544!3d21.00560799394312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac76ccab6dd7%3A0x55e92a5b07a97d03!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBraG9hIEjDoCBO4buZaQ!5e0!3m2!1svi!2sin!4v1607954284959!5m2!1svi!2sin" ></iframe>
                 </div>
               </div>
             </div>

@@ -82,7 +82,7 @@ class Re extends Component {
 
       <div className="container">
           <div className="registration">
-            <h1 className="size32">Đăng Ký Nhận Giải Cứu</h1>
+            <h1 className="size32">Đăng Ký Được Giải Cứu</h1>
             <div className="form" >
                 <div className="form-group">
                     <label >Tên </label>
@@ -124,7 +124,7 @@ class Re extends Component {
                     <label >Description</label>
                     <textarea name="description" value={this.state.description} onChange={this.onChange}></textarea>
                 </div>
-                
+
                 <div className="form-group">
                     <label >message</label>
                     <textarea name="message" value={this.state.message} onChange={this.onChange}></textarea>

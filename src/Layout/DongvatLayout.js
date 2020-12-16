@@ -31,7 +31,7 @@ function DongvatLayout(props){
           let status = (value.status ===1 ) ? "cần giải cứu gấp":"bình thường"
           return(
             <div>
-                <p>{value.name+'( '+status+" )"}</p>
+                <h4><b>{value.name+'( '+status+" )"}</b></h4>
                 <ShowProduct data={data1} ></ShowProduct>
             </div>
           )
@@ -45,26 +45,22 @@ function DongvatLayout(props){
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="slider-info banner-view bg bg2" data-selector=".bg.bg2">
+              <div class="slider-info banner-view banner-dv1 bg bg2" data-selector=".bg.bg2">
                 <div class="banner-info">
                   <div class="container">
                     <div class="banner-info-bg mr-auto">
-                      <h5>Vegetables and Fruits Good For Health</h5>
-                      <p>Conse ctetur Lorem ipsum dolor sit amet adipi sicing elit. Quae, velit recu sandae eum necessi tatibus bland itiis</p>
-                      <a class="btn btn-theme2 mt-md-5 mt-4" href="contact.html"> Contact Us</a>
+                      <h5>ĐỘNG VẬT LÀ BẠN CỦA CON NGƯỜI</h5>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="carousel-item">
-              <div class="slider-info  banner-view banner-top1 bg bg2" data-selector=".bg.bg2">
+              <div class="slider-info  banner-view banner-dv2 bg bg2" data-selector=".bg.bg2">
                 <div class="banner-info">
                   <div class="container">
                     <div class="banner-info-bg mr-auto">
-                      <h5>Vegetables and Fruits Good For Health</h5>
-                      <p>Conse ctetur Lorem ipsum dolor sit amet adipi sicing elit. Quae, velit recu sandae eum necessi tatibus bland itiis</p>
-                      <a class="btn btn-theme2 mt-md-5 mt-4" href="contact.html"> Contact Us</a>
+                      <h5>CHUNG TAY GIẢI CỨU ĐỘNG VẬT</h5>
                     </div>
                   </div>
                 </div>

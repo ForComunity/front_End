@@ -18,6 +18,7 @@ import Search from "../../Layout/Search"
 import Axios from 'axios';
 import DongvatLayout from '../../Layout/DongvatLayout';
 import Re from '../../Component/Re/Re';
+import TochucLayout from '../../Layout/TochucLayout';
 class Body extends Component {
   constructor (props) {
     super(props)
@@ -47,7 +48,7 @@ class Body extends Component {
     console.log(this.state.search);
   }
   show(id){
-    console.log(id,typeof(id));
+    // console.log(id,typeof(id));
       if (id!==0){
         return(
           <li className="nav-item">
@@ -95,6 +96,9 @@ class Body extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/registration" >Nhận giải cứu</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/organization" >Tổ Chức</Link>
+                            </li>
                             {this.show(user.id)}
                         </ul>
                         <form className="form-inline" onSubmit={(event)=>{this.search()}} action="/search">
@@ -110,6 +114,7 @@ class Body extends Component {
                     <Route path="/nongsan1" exact render={props =>  <ShowProduct {...props} class={this.props.class1}  Name="nông sản" />}/>
                     <Route path="/nongsan" exact  render={props =>  <NongsanLayout {...props} class={this.props.class1}  Name="nông sản" />}/>
                     <Route path="/dongvat" exact  render={props =>  <DongvatLayout {...props} class={this.props.class1}  Name="Động vật" />}/>
+                    <Route path="/organization" exact  render={props =>  <TochucLayout {...props} class={this.props.class1}  Name="Tổ chức" />}/>
                     <Route path="/product/:name/:id" exact component={Product}/>
                     <Route path="/login" exact render={props =>  <Login {...props} st="login" />}/>
                     <Route path="/register" exact render={props =>  <Login {...props} st="register" />}/>

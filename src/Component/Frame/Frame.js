@@ -16,7 +16,7 @@ function Frame(props)  {
         return(
           <div className="img-box col-lg-4 col-md-6">
             <img src={link} alt="product" className="img-responsive "></img>
-            <h5 className="my-2"><Link to={link3}> {props.as_name}</Link></h5>
+            <h5 className="my-2"><b><Link to={link3}> {props.as_name}</Link></b></h5>
             <p className="para">{props.as_description_seo}</p>
           </div>
         )

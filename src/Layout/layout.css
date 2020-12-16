@@ -1,5 +1,5 @@
 .banner-view {
-  background: url(http://46e8564587bc.ngrok.io/uploads/2020/04/17/p1.jpg) no-repeat center;
+  background: url("/img/p1.jpg") no-repeat center;
   background-size: cover;
   min-height: calc(100vh - 50px);
   position: relative;
@@ -20,8 +20,16 @@
     z-index: -1;
 }
 .banner-top1 {
-      background: url(http://46e8564587bc.ngrok.io/uploads/2020/04/17/p2.jpg) no-repeat center;
+      background: url("/img/p2.jpg") no-repeat center;
       background-size: cover;
+}
+.banner-dv1{
+  background: url("/img/bannerdv1.jpg") no-repeat center;
+      background-size: cover;
+}
+.banner-dv2{
+  background: url("/img/bannerdv2.jpg") no-repeat center !important;
+  background-size: contain !important;
 }
 .banner-info-bg ul li {
   display: inline-block;

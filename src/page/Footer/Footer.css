@@ -68,7 +68,7 @@ background:#000;
   margin-right:20px;
 }
 .ftr-menu {
-  text-align: right;
+  text-align: right !important;
   margin-top: 20px;
 }
 .agileinfo-newsletter input[type="email"] {
@@ -131,6 +131,7 @@ background:#000;
   font-size: 17px;
   color: #fff;
   letter-spacing: 2px;
+  text-align: left !important;
 }
 .ftr-menu ul li a:hover{
   color:#eee;

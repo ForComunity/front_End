@@ -35,11 +35,12 @@ function ShowProduct(props)  {
           let userid
           menu =Object(menu)
           // console.log(menu.id);
-          // console.log(typeof(menu));
+          console.log(menu);
           if (menu.user_id === null) {
               userid='admin'
           } else userid =menu.user_id
           // console.log(menu)
+          if (menu.status===1)
           return(
               <Frame as_name={menu.name} key={menu.slug} id={menu.id} as_title_seo={menu.title_seo} as_description_seo={menu.description_seo} link={menu.slug} time={menu.created_at} userid={userid} img={menu.image1} >  </Frame>
           )

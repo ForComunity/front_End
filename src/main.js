@@ -4,7 +4,7 @@ import Body from '../src/page/Body/Body';
 import Footer from '../src/page/Footer/Footer';
 import Axios from 'axios';
 import './index.css'
-import { listproduct, listspeciesCategory, user } from './Component/Product/store';
+import { listproduct, listspeciesCategory, listtochuc, listtochucCategory, listuser, user } from './Component/Product/store';
 import {BrowserRouter as Router,
 } from "react-router-dom";
 import { observer } from 'mobx-react';
@@ -27,9 +27,20 @@ class Main extends Component{
         // user.changeuser()
         Axios.get("/api/species").then(res=>{
           listproduct.changlistproduct(res.data)
+          console.log(res.data);
         })
+        // console.log(listproduc);
         Axios.get('/api/speciesCategory').then(res=>{
           listspeciesCategory.change(res.data)
+        })
+        Axios.get('/api/organizationCategory').then(res=>{
+          listtochucCategory.change(res.data)
+        })
+        Axios.get('/api/organization').then(res=>{
+          listtochuc.changlistproduct(res.data)
+        })
+        Axios.get('/api/user').then(res=>{
+          listuser.changlistuser(res.data)
         })
         // console.log("object");
         window.addEventListener("scroll", this.handleScroll);
@@ -100,7 +111,7 @@ class Main extends Component{
       let phone= localStorage.getItem('phone')
       let address= localStorage.getItem('address')
       let email=localStorage.getItem('email')
-      // console.log(id);
+      // console.log(listuser.listuser);
       if (id !== null) {
         if (user.id !== id){
           user.changeuser(name,id,phone,address,email)

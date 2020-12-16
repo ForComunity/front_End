@@ -8,26 +8,25 @@ function Rating(props){
         <div className="container">
       <div className="row">
       <div className="my-bio col-xl-6">
-        <h3>Our Experience</h3>
-      <p className="para mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.inventore deleniti dolore sequi labore similique vitae quae est.</p>
+        <h3>ĐÁNH GIÁ</h3>
         <div className="details-details">
           <div className="my-bar-grids">
-            <h4>Product Purity<span> 80% </span></h4>
+            <h4>Hương Vị<span> 80% </span></h4>
               <Progress wi="80%"></Progress>
 
           </div>
           <div className="my-bar-grids">
-            <h4>Farmers Competence<span> 60% </span></h4>
+            <h4>Chất Lượng<span> 60% </span></h4>
 
             <Progress wi="60%"></Progress>
           </div>
           <div className="my-bar-grids">
-            <h4>Equipment<span> 70% </span></h4>
+            <h4>Màu Sắc<span> 70% </span></h4>
 
             <Progress wi="70%"></Progress>
           </div>
           <div className="my-bar-grids">
-            <h4>Satisfied Customers<span> 60% </span></h4>
+            <h4>Giá Thành<span> 60% </span></h4>
 
             <Progress wi="60%"></Progress>
           </div>

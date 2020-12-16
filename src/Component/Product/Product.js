@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import './Product.css';
 import Axios from 'axios';
 import Lq from './Lq';
-import { listlq, listproduct, user } from './store';
+import { listlq, listproduct, listuser, product, productinfor, user } from './store';
 import Rating from '../Rating/Rating';
 import { Link } from 'react-router-dom';
 // import Banner from './Banner';
@@ -56,11 +56,16 @@ function Product(props) {
       Axios.get(url1).then(res=>{
         listlq.changlistproduct(res.data)
       })
+      // Axios.get(`/api/species/${props.match.params.id}`).then(res=>{
+      //   productinfor.changdata(res.data)
+      // })
       console.log("object");
       Axios.get("/api/comment")
         .then(res=>{
-          // console.log(res.data);
-          setlistcmt(res.data)
+          let id1= Number(props.match.params.id)
+          let data1=res.data.filter(value=>value.species_id===id1)
+          console.log(data1,res.data,id1);
+          setlistcmt(data1)
         })
     },[props.match.params.id])
 
@@ -70,13 +75,14 @@ function Product(props) {
 
         }
         // console.log('abc');
-        Axios.post("http://27ef2075b098.ngrok.io/api/comment",{user_id:user.id,species_id:data.id,content:cmt1})
+        Axios.post("http://8be1b3de547c.ngrok.io/api/comment",{user_id:user.id,species_id:data.id,content:cmt1})
         .then(res=>{
         // console.log(res.data);
         Axios.get("/api/comment")
         .then(res=>{
           // console.log(res.data);
-          setlistcmt(res.data)
+          let data1=res.data.filter(value=>value.species_id===props.match.params.id)
+          setlistcmt(data1)
           setcmt1('')
         })
         })
@@ -87,20 +93,18 @@ function Product(props) {
       // console.log(data,id);
       let result=null
       result=data.map(value=>{
-        console.log(id,value.species_id);
-        if (id===value.species_id){
+        let usercmt=listuser.listuser.find(abc=>abc.id===value.user_id)
           return(
             <div className="txtCmt row">
               <div className="col-1">
                 <i class="far fa-user"></i>
               </div>
               <div className="col-9">
-                  <b>{value.user_id}</b>
+                  <b>{usercmt.name}</b>
                   <p>{value.content}</p>
               </div>
             </div>
           )
-        }
       })
       return result
     }
@@ -115,6 +119,13 @@ function Product(props) {
         // console.log(link)
         return link
     }
+    function showRa(data){
+      if (data.cat_id ===3){
+        return (
+           <Rating img={changel(data.image1)}></Rating>
+        )
+      }
+    }
     // render(){
     const [cmt1,setcmt1]=useState('')
     const [listcmt,setlistcmt]=useState([])
@@ -123,7 +134,8 @@ function Product(props) {
     }
       let data=1;
       data=listproduct.product(props.match.params.id)
-      // console.log(listcmt);
+      console.log(listcmt);
+      // console.log(productinfor.infor);
       if (data!==undefined){
         return(
           // <div></div>
@@ -157,12 +169,14 @@ function Product(props) {
                         </div>
                     </div>
                  </div>
-                 <Rating img={changel(data.image1)}></Rating>
+                 {
+                    showRa(data)
+                 }
                  <div className="cmt">
                      <div className="container">
                         <h3>Bình Luận</h3>
                         <div className="tCmt">
-                            <b>Sô lương : 0 bình luận</b>
+                            <b>Sô lương : {listcmt.length} bình luận</b>
                             <div className="row">
                                 <b className="col-7">Sắp Xếp Theo </b>
                                 <select className="custom-select dropdown-toggle col-5" id="inputGroupSelect01">

@@ -25,55 +25,34 @@ class Footer extends Component {
                   <i className="fa fa-linkedin"></i>
                 </a>
               </div>
-                <div className="col-md-4 agileinfo-newsletter">
-                  <h3>
-                    <i className="fa fa-envelope" aria-hidden="true"></i>Join our Newsletter</h3>
-                  <form action="#" method="post">
-                    <input type="email" placeholder="Enter Your Email" name="email" required=""></input>
-                    <input type="submit" value="Subscribe"></input>
-                  </form>
-                </div>
+
               </div>
               <div className="clearfix"> </div>
             </div>
             <div className="container">
-              <div classNameName="row">
+              <div className="row">
               <div className="col-3 logo2">
                 <h2>
                   <Link to="/">
-                    <span>G</span>reen
-                    <span>L</span>ife</Link>
+                    <span>F</span>or
+                    <span>C</span>ommunity</Link>
                 </h2>
               </div>
               <div className="col-9 ftr-menu">
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <Link to='/'>Home</Link>
                   </li>
                   <li>
-                    <a className="scroll" href="#about">About</a>
+                    <Link className="scroll" to='/nongsan'>Nông Sản</Link>
                   </li>
                   <li>
-                    <a className="scroll" href="#services">Services</a>
-                  </li>
-                  <li>
-                    <a className="scroll" href="#team">Team</a>
-                  </li>
-                  <li>
-                    <a className="scroll" href="#projects">Projects</a>
-                  </li>
-                  <li>
-                    <a className="scroll" href="#contact">Contact Us</a>
+                    <Link className="scroll" to="/dongvat">Động Vật</Link>
                   </li>
                 </ul>
               </div>
               </div>
               <div className="clearfix"></div>
-              <div className="copy-right">
-                <p> &copy; 2018 Green Life. All Rights Reserved | Design by
-                  <a href="http://w3layouts.com/"> W3layouts</a>
-                </p>
-              </div>
             </div>
           </div>
         )

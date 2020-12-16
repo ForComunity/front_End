@@ -6,15 +6,15 @@ import ShowProduct from '../Component/Show/ShowProduct'
 function Search(props){
   useEffect(()=>{
     let search=props.location.search
-    console.log(search.slice(8))
+    let namesearch= search.slice(8)
 
-    // Axios.get(url).then(res=>{
-    //   listsearch.changlistproduct(res.data)
-    // })
+    Axios.post('/api/search',{name:namesearch}).then(res=>{
+      listsearch.changlistproduct(res.data)
+    })
 
   },[])
-  // console.log(listsearch.listproduct);
-  // console.log(props.location.search)
+  console.log(listsearch.listproduct);
+  console.log(props.location.search)
   return(
       <div className="abc">
           <p>Có {listsearch.length} sản phẩm tương ứng</p>

@@ -135,7 +135,7 @@ handleInputValidation = (event) => {
   login(){
     var {username,password }=this.refs;
     console.log(username.value,password.value)
-   axios.post('http://27ef2075b098.ngrok.io/api/login',{email:username.value,password:password.value})
+   axios.post('https://d6fc744ecac1.ngrok.io/api/login',{email:username.value,password:password.value})
     .then(res=>{
       console.log(res.data);
       if (res.data!==undefined){
@@ -159,18 +159,18 @@ handleInputValidation = (event) => {
   register(){
     var {username,password,name,phone,address }=this.refs;
     console.log(username.value,password.value,phone.value)
-   axios.post('http://27ef2075b098.ngrok.io/api/register',{email:username.value,password:password.value,name:name.value,address:address.value,phone:phone.value})
+   axios.post('https://d6fc744ecac1.ngrok.io/api/register',{email:username.value,password:password.value,name:name.value,address:address.value,phone:phone.value})
     .then(res=>{
       console.log(res.data);
       if (res.data!==undefined){
         console.log(res.data);
         console.log(res.data.user)
-        user.changeuser(res.data.user[0].name,res.data.user[0].id,res.data.user[0].phone,res.data.user[0].address,res.data.user[0].email)
+        user.changeuser(res.data.user.name,res.data.user.id,res.data.user.phone,res.data.user.address,res.data.user.email)
         localStorage.setItem ('name', res.data.user.name);
         localStorage.setItem ('id', res.data.user.id);
-        localStorage.setItem ('phone', res.data.user[0].phone);
-        localStorage.setItem ('address', res.data.user[0].address);
-        localStorage.setItem ('email', res.data.user[0].email);
+        localStorage.setItem ('phone', res.data.user.phone);
+        localStorage.setItem ('address', res.data.user.address);
+        localStorage.setItem ('email', res.data.user.email);
         this.setState({
           kq:"thanh cong"
         })

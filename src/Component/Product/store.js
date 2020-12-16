@@ -13,6 +13,7 @@ const User = types.model({
   //   return self.id
   // }
 }))
+
 .actions((self)=>{
   function changeuser(name,id,phone,address,email){
     let id1= Number(id)
@@ -31,7 +32,20 @@ const User = types.model({
     dl
   }
 })
-
+const Listuser = types.model({
+  listuser : types.array(User)
+})
+.actions(self=>{
+  function changlistuser(data){
+    if (data[0] !== undefined)
+    self.listuser = data
+    // console.log(self.listproduct);
+  }
+  return{
+    changlistuser
+  }
+})
+export const listuser=Listuser.create()
 const speciesCategory = types.model({
   id : types.optional(types.maybeNull(types.number), null),
   name : types.optional(types.maybeNull(types.string), null),
@@ -55,8 +69,9 @@ const ListspeciesCategory = types.model({
   }
 })
 export const listspeciesCategory=ListspeciesCategory.create()
+export const listtochucCategory=ListspeciesCategory.create()
 const Product = types.model({
-  id : types.number,
+  id : types.optional(types.maybeNull(types.number), null),
   name : types.optional(types.maybeNull(types.string), null),
   slug : types.optional(types.maybeNull(types.string), null),
   spe_cat_id : types.optional(types.maybeNull(types.number), null),
@@ -76,6 +91,18 @@ const Product = types.model({
   created_at : types.optional(types.maybeNull(types.string), null),
   updated_at : types.optional(types.maybeNull(types.string), null),
 })
+// const productInfor = types.model({
+//   infor: types.array(Product)
+// })
+// .actions(self=>{
+//   function changdata(data){
+//       self.infor.push(data)
+//   }
+//   return{
+//     changdata
+//   }
+// })
+// export const productinfor= productInfor.create([])
 const Category = types.model({})
 const ListProduct = types.model("ListProduct",{
   listproduct : types.array(Product)
@@ -147,6 +174,8 @@ export default ListProduct
 export const listproduct=ListProduct.create()
 export const listsearch=ListProduct.create()
 export const listlq=ListProduct.create()
+export const listtochuc=ListProduct.create()
 export const user=User.create()
+export const product=Product.create()
 
 

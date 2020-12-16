@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 function Service(props){
-
+console.log(props.to);
   return(
     <div class="col-md-4 col-sm-6 agileits-services-grids row">
       <div class="col-xs-3 wthree-ser">
@@ -12,7 +12,7 @@ function Service(props){
       </div>
       <div class="clearfix"></div>
       <p>{props.content}</p>
-      <Link to="#" data-toggle="modal" data-target="#myModal1" class="w3-buttons">Read More</Link>
+      <Link to={props.to}  class="w3-buttons">Read More</Link>
     </div>
   )
 
