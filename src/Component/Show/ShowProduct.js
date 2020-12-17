@@ -27,8 +27,9 @@ function ShowProduct(props)  {
     //     })
     // }
 
-    function Show(data){
+    function Show(data,ac,title){
       var result = null;
+      console.log(ac)
       // console.log(data[0])
       result = data.map((menu, index) =>{
           // var link=menu.Link+"_1"
@@ -40,10 +41,22 @@ function ShowProduct(props)  {
               userid='admin'
           } else userid =menu.user_id
           // console.log(menu)
-          if (menu.status===1)
-          return(
-              <Frame as_name={menu.name} key={menu.slug} id={menu.id} as_title_seo={menu.title_seo} as_description_seo={menu.description_seo} link={menu.slug} time={menu.created_at} userid={userid} img={menu.image1} >  </Frame>
-          )
+          if (ac===1){
+            if (menu.status===1)
+            {
+              if (menu.active===1){
+                return(
+                  <Frame title={title} as_name={menu.name} key={menu.slug} id={menu.id} as_title_seo={menu.title_seo} as_description_seo={menu.description_seo} link={menu.slug} time={menu.created_at} userid={userid} img={menu.image1} >  </Frame>
+                )
+              }
+            }
+          }else {
+            if (menu.status===1)
+              return(
+                <Frame title={title} as_name={menu.name} key={menu.slug} id={menu.id} as_title_seo={menu.title_seo} as_description_seo={menu.description_seo} link={menu.slug} time={menu.created_at} userid={userid} img={menu.image1} >  </Frame>
+              )
+          }
+
       })
       return result
       }
@@ -60,7 +73,7 @@ function ShowProduct(props)  {
         return(
           <div className="row">
 
-            {Show(props.data)}
+            {Show(props.data,props.ac,props.title)}
         </div>
         )
 }

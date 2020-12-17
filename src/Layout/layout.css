@@ -95,3 +95,11 @@ a.btn-theme2:hover {
   line-height: 26px;
   color: #fff;
 }
+.bntc1{
+  background: url("/img/bntc1.jpg") no-repeat center !important;
+  background-size: contain !important;
+}
+.bntc2{
+  background: url("/img/bntc2.jpg") no-repeat center !important;
+  background-size: contain !important;
+}

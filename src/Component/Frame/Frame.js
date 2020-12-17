@@ -11,7 +11,11 @@ function Frame(props)  {
         var link2=link1.split('-')
         link=link+'/'+link2[0]+'/'+link2[1]+'/'+link2[2]+"/"+img
         // console.log(link)
-        var link3='/product/'+props.link+"/"+props.id
+        if (props.title === 'Tổ Chức') {
+          var link3='/tochuc/'+props.link+"/"+props.id
+        } else {
+          var link3='/product/'+props.link+"/"+props.id
+        }
         // console.log(link3)
         return(
           <div className="img-box col-lg-4 col-md-6">

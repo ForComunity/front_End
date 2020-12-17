@@ -44,7 +44,7 @@ class Registration extends Component {
     return result
   }
   submit=(data)=>{
-    Axios.post('https://d6fc744ecac1.ngrok.io/api/rescue',{name:user.name,email:user.email,phone:user.phone,address:user.address,job:this.state.job,message:this.state.message,species_id:data.spe_cat_id,user_id:user.id})
+    Axios.post('/api/rescue',{name:user.name,email:user.email,phone:user.phone,address:user.address,job:this.state.job,message:this.state.message,species_id:data.spe_cat_id,user_id:user.id})
     .then(res=>{
       console.log(res.data);
       if (res.data!==undefined){

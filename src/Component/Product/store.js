@@ -90,6 +90,7 @@ const Product = types.model({
   content3 : types.optional(types.maybeNull(types.string), null),
   created_at : types.optional(types.maybeNull(types.string), null),
   updated_at : types.optional(types.maybeNull(types.string), null),
+  active : types.optional(types.maybeNull(types.number), null),
 })
 // const productInfor = types.model({
 //   infor: types.array(Product)

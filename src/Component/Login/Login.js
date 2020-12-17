@@ -135,7 +135,7 @@ handleInputValidation = (event) => {
   login(){
     var {username,password }=this.refs;
     console.log(username.value,password.value)
-   axios.post('https://d6fc744ecac1.ngrok.io/api/login',{email:username.value,password:password.value})
+   axios.post('/api/login',{email:username.value,password:password.value})
     .then(res=>{
       console.log(res.data);
       if (res.data!==undefined){
@@ -159,7 +159,7 @@ handleInputValidation = (event) => {
   register(){
     var {username,password,name,phone,address }=this.refs;
     console.log(username.value,password.value,phone.value)
-   axios.post('https://d6fc744ecac1.ngrok.io/api/register',{email:username.value,password:password.value,name:name.value,address:address.value,phone:phone.value})
+   axios.post('/api/register',{email:username.value,password:password.value,name:name.value,address:address.value,phone:phone.value})
     .then(res=>{
       console.log(res.data);
       if (res.data!==undefined){

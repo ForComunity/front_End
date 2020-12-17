@@ -16,8 +16,8 @@ function Search(props){
   console.log(listsearch.listproduct);
   console.log(props.location.search)
   return(
-      <div className="abc">
-          <p>Có {listsearch.length} sản phẩm tương ứng</p>
+      <div className="abc container">
+          <p>Có {listsearch.listproduct.length} sản phẩm tương ứng</p>
           <ShowProduct data={listsearch.listproduct}></ShowProduct>
       </div>
   )

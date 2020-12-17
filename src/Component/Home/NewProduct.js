@@ -3,6 +3,8 @@ import './NewProduct.css';
 import '../../hover.css'
 import Frame from '../Frame/Frame';
 import Axios from 'axios';
+import ShowProduct from "../Show/ShowProduct";
+import {listproduct} from "../Product/store";
 class NewProduct extends Component {
   constructor(props) {
     super(props);
@@ -42,12 +44,10 @@ class NewProduct extends Component {
 }
     render(){
         return(
-            <div className="NewProduct">
-                <div className="container">
+            <div className="">
+                <div className="pd container">
                     <p className="p1 animated bounceInUp">CẦN GIẢI CỨU GẤP</p>
-                    <div className="row">
-                        {this.Show(this.state.data)}
-                    </div>
+                    <ShowProduct data={listproduct.listproduct} ac={1} />
                 </div>
 
             </div>

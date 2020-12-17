@@ -18,7 +18,7 @@ function Team(props){
 
         <Team_infor name="Hoàng anh" img="/img/hoanganh.jpg" fb="https://www.facebook.com/hoanganh.vu.773124" ins=""></Team_infor>
         <Team_infor name="Đức Anh" img="/img/ducanh.png" fb="https://www.facebook.com/hoangduc.anh.1420/" ins=""></Team_infor>
-        <Team_infor name="Minh Nguyệt" img="/img/hoanganh.jpg" fb="https://www.facebook.com/NguyetHMMM/" ins=""></Team_infor>
+        <Team_infor name="Minh Nguyệt" img="/img/nguyet.png" fb="https://www.facebook.com/NguyetHMMM/" ins=""></Team_infor>
         </div>
 			</div>
 		</div>

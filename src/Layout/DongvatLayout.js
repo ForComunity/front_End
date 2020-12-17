@@ -22,6 +22,15 @@ function DongvatLayout(props){
     // listNongsan.changlistproduct(data1[0])
     // // console.log(listNongsan.listproduct)
     // console.log(data1[0]);
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+  useEffect(()=>{
+    // scrollToTop()
+  })
     function showin(category,data){
       let result = null
       result = category.map(value=>{
@@ -32,7 +41,7 @@ function DongvatLayout(props){
           return(
             <div>
                 <h4><b>{value.name+'( '+status+" )"}</b></h4>
-                <ShowProduct data={data1} ></ShowProduct>
+                <ShowProduct title="Động Vật" data={data1} ></ShowProduct>
             </div>
           )
         }

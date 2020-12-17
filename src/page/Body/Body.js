@@ -116,6 +116,7 @@ class Body extends Component {
                     <Route path="/dongvat" exact  render={props =>  <DongvatLayout {...props} class={this.props.class1}  Name="Động vật" />}/>
                     <Route path="/organization" exact  render={props =>  <TochucLayout {...props} class={this.props.class1}  Name="Tổ chức" />}/>
                     <Route path="/product/:name/:id" exact component={Product}/>
+                    <Route path="/tochuc/:name/:id" exact render={props =>  <Product {...props} Name="Tổ chức" />}/>
                     <Route path="/login" exact render={props =>  <Login {...props} st="login" />}/>
                     <Route path="/register" exact render={props =>  <Login {...props} st="register" />}/>
                     <Route path="/registration/:name" exact component={Registration}/>

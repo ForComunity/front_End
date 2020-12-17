@@ -20,7 +20,7 @@ class Re extends Component {
 
  }
  submit=()=>{
-  Axios.post('http://27ef2075b098.ngrok.io/api/registToBeRescued',{name:user.name,email:user.email,phone:user.phone,address:user.address,description:this.state.description,message:this.state.message,spe_name:this.state.spe_name,species_category_id:this.state.tech1})
+  Axios.post('/api/registToBeRescued',{name:user.name,email:user.email,phone:user.phone,address:user.address,description:this.state.description,message:this.state.message,spe_name:this.state.spe_name,species_category_id:this.state.tech1})
   .then(res=>{
     console.log(res.data);
     if (res.data!==undefined){

@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import './Product.css';
 import Axios from 'axios';
 import Lq from './Lq';
-import { listlq, listproduct, listuser, product, productinfor, user } from './store';
+import {listlq, listproduct, listtochuc, listtochucCategory, listuser, product, productinfor, user} from './store';
 import Rating from '../Rating/Rating';
 import { Link } from 'react-router-dom';
 // import Banner from './Banner';
@@ -75,16 +75,18 @@ function Product(props) {
 
         }
         // console.log('abc');
-        Axios.post("http://8be1b3de547c.ngrok.io/api/comment",{user_id:user.id,species_id:data.id,content:cmt1})
+        Axios.post("/api/comment",{user_id:user.id,species_id:data.id,content:cmt1})
         .then(res=>{
         // console.log(res.data);
-        Axios.get("/api/comment")
-        .then(res=>{
-          // console.log(res.data);
-          let data1=res.data.filter(value=>value.species_id===props.match.params.id)
-          setlistcmt(data1)
-          setcmt1('')
-        })
+          Axios.get("/api/comment")
+          .then(res=>{
+            // console.log(res.data);
+            let id1= Number(props.match.params.id)
+            let data1=res.data.filter(value=>value.species_id===id1)
+            console.log(data1,res.data,id1);
+            setlistcmt(data1)
+            setcmt1('')
+          })
         })
 
       }
@@ -126,15 +128,50 @@ function Product(props) {
         )
       }
     }
+    function showtitle(data,title) {
+      console.log(data)
+      if (title ==='Tổ chức'){
+        if (data.cat_id===1){
+          return(
+            <span>
+            Giải Cứu <i className="fas fa-angle-right"></i> Đội Tình Nguyện <i className="fas fa-angle-right"></i> {data.name}
+          </span>
+          )
+        } else {
+          return(
+            <span>
+            Giải Cứu <i className="fas fa-angle-right"></i> Doanh Nghiệp <i className="fas fa-angle-right"></i> {data.name}
+          </span>
+          )
+        }
+      } else
+      if (data.cat_id==3){
+        return(
+          <span>
+            Giải Cứu <i className="fas fa-angle-right"></i> Nông Sản <i className="fas fa-angle-right"></i> {data.name}
+          </span>
+        )
+      } else {
+        return(
+          <span>
+            Giải Cứu <i className="fas fa-angle-right"></i> Động Vật <i className="fas fa-angle-right"></i> {data.name}
+          </span>
+        )
+      }
+    }
     // render(){
     const [cmt1,setcmt1]=useState('')
     const [listcmt,setlistcmt]=useState([])
     function changcmt(e){
       setcmt1(e.target.value)
     }
-      let data=1;
-      data=listproduct.product(props.match.params.id)
-      console.log(listcmt);
+      let data=1
+      if (props.Name==="Tổ chức") {
+        data=listtochuc.product(props.match.params.id)
+      } else{
+        data=listproduct.product(props.match.params.id)
+      }
+      console.log(listtochucCategory)
       // console.log(productinfor.infor);
       if (data!==undefined){
         return(
@@ -145,9 +182,10 @@ function Product(props) {
                 Tìm kiếm <i class="fas fa-search"></i></div>
                 <div className="pTitle">
                     <div className="container">
-                        <span>
-                             Giải Cứu <i class="fas fa-angle-right"></i> Nông Sản <i class="fas fa-angle-right"></i>  {data.as_name}
-                        </span>
+                        {/*<span>*/}
+                        {/*     Giải Cứu <i class="fas fa-angle-right"></i> {} <i class="fas fa-angle-right"></i>  {data.as_name}*/}
+                        {/*</span>*/}
+                      {showtitle(data ,props.Name)}
                     </div>
                  </div>
                  <div className="product">
