@@ -153,7 +153,7 @@ class Home extends Component {
           </div>
         </div>
         <Team></Team>
-        <Ourproject></Ourproject>
+        {/*<Ourproject></Ourproject>*/}
         <div class="contact" id="contact">
           <div class="title-div">
             <h3 class="tittle">

@@ -128,6 +128,13 @@ function Product(props) {
         )
       }
     }
+    function showbt(title){
+      console.log(title)
+      if (title!=="Tổ chức"){
+        return (
+          <Link to={`/registration/${data.id}`}><button className="hvr-sweep-to-right">Nhận Giải Cứu</button></Link>
+        )
+    }}
     function showtitle(data,title) {
       console.log(data)
       if (title ==='Tổ chức'){
@@ -201,7 +208,8 @@ function Product(props) {
                                 <div dangerouslySetInnerHTML={{ __html: data.content2 }}></div>
                                 <img src={changel(data.image3)} width="70%" margin-right="15%" alt="anh"></img>
                                 <div dangerouslySetInnerHTML={{ __html: data.content3 }}></div>
-                                <Link to={`/registration/${data.id}`}><button className="hvr-sweep-to-right">Nhận Giải Cứu</button></Link>
+                              {showbt(props.Name)}
+                                {/*<Link to={`/registration/${data.id}`}><button className="hvr-sweep-to-right">Nhận Giải Cứu</button></Link>*/}
                             </div>
                             <Lq data={listproduct.listproduct} id={data.spe_cat_id} id1={data.id}></Lq>
                         </div>
